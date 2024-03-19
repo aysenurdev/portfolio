@@ -22,9 +22,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#131424',
-        secondary: '#393A47',
-        accent: '#F13024',
+        primary: '#ffffff',
+        secondary: '#4b3792',
+        accent: '#386641',
       },
       backgroundImage: {
         explosion: 'url("/bg-explosion.png")',
@@ -33,7 +33,7 @@ module.exports = {
         site: 'url("/site-bg.svg")',
       },
       animation: {
-        'spin-slow': 'spin 6s linear infinite',
+        'spin-slow': 'spin 9s linear infinite',
       },
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
