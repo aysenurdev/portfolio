@@ -23,12 +23,12 @@ module.exports = {
     extend: {
       colors: {
         primary: '#ffffff',
-        secondary: '#4b3792',
-        accent: '#386641',
+        secondary: '#4287CF',
+        accent: '#545454',
       },
       backgroundImage: {
         explosion: 'url("/bg-explosion.png")',
-        circles: 'url("/bg-circles.png")',
+        // circles: 'url("/bg-circles.png")',
         circleStar: 'url("/circle-star.svg")',
         site: 'url("/site-bg.svg")',
       },
@@ -38,6 +38,7 @@ module.exports = {
       fontFamily: {
         poppins: [`var(--font-poppins)`, 'sans-serif'],
         sora: [`var(--font-sora)`, 'sans-serif'],
+        cinzel: ['Cinzel'], // Adding Cinzel font
       },
     },
   },
@@ -47,4 +48,10 @@ module.exports = {
     },
   },
   plugins: [require('tailwind-scrollbar')],
+
+
+
+
 };
+
+

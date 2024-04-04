@@ -10,9 +10,12 @@ import { useRouter } from 'next/router';
 
 //framer motion
 import { AnimatePresence, motion } from 'framer-motion';
+// _app.js or Layout component
 
 
 function MyApp({ Component, pageProps }) {
+
+
   const router = useRouter();
   return(
     <Layout>

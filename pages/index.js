@@ -1,7 +1,10 @@
 //next image
 import image from "next/image";
+import {GoogleFonts} from 'next-google-fonts';
+import { useEffect } from "react";
+
 //components
-import ParticlesContainer from "../components/ParticlesContainer";
+
 import ProjectsBtn from "../components/ProjectsBtn";
 import Avatar from "../components/Avatar";
 
@@ -12,18 +15,20 @@ import {motion} from 'framer-motion';
 import {fadeIn} from '../variants';
 
 const Home = () => {
-  return <div className="bg-primary h-full">
+  
+  return <div className="bg-white h-full">
     {/* text */}
-    <div className="w-full h-full ">
-      <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
+    <div className="w-full h-full">
+      <div className="text-center flex flex-col  justify-center md:pt-60 xl:text-left h-full container mx-auto">
         {/* title */}
         <motion.h1
          variants={fadeIn('down', 0,2)}
          initial='hidden'
           animate='show'
           exit='hidden'
-         className="h1">
-          Aysenur Demir <br /> I'm a{''} <span className="text-accent">Front-End Web Developer</span>
+          style={{ fontFamily: 'Cinzel' }}
+         className="h1 font-cinzel  text-secondary">
+          Aysenur Demir <br /><span className="text-accent">Front-End Web Developer</span>
         </motion.h1>
         {/* subtitle */}
         <motion.p
@@ -32,10 +37,10 @@ const Home = () => {
           animate='show'
           exit='hidden'
          className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16">
-          Lorem ipsumm client and server successfully in 2.5s 531 modules. Lorem ipsumm client and server successfully in 2.5s 531 modules.    Lorem ipsumm client and server successfully in 2.5s 531 modules.
+        
         </motion.p>
          {/* btn */}
-         <div className="flex justify-center xl:hidden relative">
+         <div className="flex justify-center xl:hidden z-10">
           <ProjectsBtn />
          </div>
          <motion.div variants={fadeIn('down', 0.4)}
@@ -52,16 +57,13 @@ const Home = () => {
     <div className="w-[1200px] h-full absolute right-0 bottom-0">
   {/* bg img */}
   <div className="bg-none xl:bg-explosion xl:bg:cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0 "></div>
-    {/* particles */}
-  <ParticlesContainer />
-{/* Avatar img */}
 <motion.div 
  variants={fadeIn('up', 0,5)}
  initial='hidden'
   animate='show'
   exit='hidden'
   transition={{duration: 1, ease: 'easeInOut'}}
-className="w-full h-full max-w-[300px] max-h-[200] absolute -bottom-10 lg:top-60 lg:right-[15%]">
+className="w-full max-w-[300px] max-h-[200] absolute  lg:top-60 lg:right-[15%]">
   <Avatar />
 </motion.div>
     </div>

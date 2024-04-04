@@ -9,10 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
     "@next/font": "^13.4.4",
+    "@nextui-org/accordion": "^2.0.28",
     "framer-motion": "^10.12.16",
     "next": "13.4.3",
+    "next-google-fonts": "^2.2.0",
     "react": "18.2.0",
+    "react-collapse": "^5.1.1",
     "react-countup": "^6.4.2",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",

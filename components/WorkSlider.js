@@ -1,107 +1,116 @@
-// data
-
-export const workSlider = {
-  slides: [
-    {
-      images: [
-        {
-          title: 'title',
-          path: '/thumb1.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb2.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb3.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb4.jpg',
-        },
-      ],
-    },
-    {
-      images: [
-        {
-          title: 'title',
-          path: '/thumb4.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb1.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb2.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb3.jpg',
-        },
-      ],
-    },
-  ],
-};
-import Link from 'next/link'; // Import Link from Next.js
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-
-import { FreeMode, Pagination } from 'swiper';
-
-//icons
-import { BsArrowRight } from 'react-icons/bs';
-//next image
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-
-// Custom component acting as a link
-const CustomLink = ({ href, children }) => {
-  return <div onClick={() => (window.location.href = href)} style={{ cursor: 'pointer' }}>{children}</div>;
-};
+import { useRouter } from 'next/router';
+import { projectsData } from '../data/data';
 
 const WorkSlider = () => {
+  const workSlider = {
+    slides: [
+      {
+        images: [
+          {
+            title: 'CineDB Movie Database',
+            path: '/lapp1.png',
+            projectId: 1,
+          },
+          {
+            title: 'Portfolio Site',
+            path: '/girl-port.png',
+            projectId: 2,
+          },
+          {
+            title: 'Mountaintop Burger',
+            path: '/burger.png',
+            projectId: 3,
+          },
+          {
+            title: 'Whack a monkey',
+            path: '/monkey.png',
+            projectId: 4,
+          },
+        ],
+      },
+    ],
+  };
+
+  const router = useRouter();
+
+  const handleImageClick = (projectId) => {
+    const project = projectsData.find((project) => project.id === projectId);
+    if (project) {
+      router.push(`/work/${project.slug}`);
+    }
+  };
+
   return (
-    <Swiper
-      spaceBetween={10}
-      pagination={{ clickable: true }}
-      modules={[Pagination]}
-      className='h-[280px] sm:h-[480px]'
-    >
+    <div className="mt-10 mb-16  grid gap-12 justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 md:mt-20 lg:mt-20 xl:mt-20">
       {workSlider.slides.map((slide, slideIndex) => (
-        <SwiperSlide key={slideIndex}>
-          <div className='grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer'>
-            {slide.images.map((image, imageIndex) => (
-              <div className='relative rounded-lg overflow-hidden flex items-center justify-center group' key={imageIndex}>
-                {/* Wrap the image with a Link component */}
-                <Link href={`/work/${slideIndex}-${imageIndex}`} passHref>
-                  {/* Use CustomLink as the child component */}
-                  <CustomLink href={`/work/${slideIndex}-${imageIndex}`}>
-                    <div className='flex items-center justify-center relative overflow-hidden group'>
-                      <Image src={image.path} width={500} height={300} alt='' />
-                      <div className='absolute inset-0 bg-gradient-to-l from-transparent via-[#e838cc] to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700'></div>
-                      <div className='absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300'>
-                        <div className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'>
-                          <div className='delay-100'>MORE INFO</div>
-                          <div className='translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-1450'></div>
-                          <div className='text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200'><BsArrowRight /></div>
-                        </div>
-                      </div>
-                    </div>
-                  </CustomLink>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </SwiperSlide>
+        <React.Fragment key={slideIndex}>
+          {slide.images &&
+            slide.images.map((image, imageIndex) => {
+              return (
+                <div
+                  className="relative rounded-lg overflow-hidden flex flex-col items-center group border border-gray-300 p-4 md:p-2 lg:p-4 hover:transform hover:translate-y-1 hover:shadow-lg transition-all duration-300"
+                  key={imageIndex}
+                  style={{ flex: '1 0 48%', marginBottom: '20px', minWidth: '250px' }}
+                >
+                  <div className="flex items-center justify-center relative">
+                    <Image
+                      src={image.path}
+                      width={230}
+                      height={50}
+                      layout="intrinsic"
+                      alt=""
+                    />
+                  </div>
+                  <div className="mt-2 text-center">
+                    <h2 className="text-xs sm:text-sm text-gray-600">{image.title}</h2>
+                    <a
+                      className="inline-flex items-center mt-1 text-xs sm:text-sm font-cinzel font-semibold text-secondary  hover:text-secondary/400 transition duration-300 transform hover:translate-y-1 cursor-pointer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleImageClick(image.projectId);
+                      }}
+                    >
+                      More Info
+                      <svg
+                        className="w-4 h-4 ml-0.4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                      <svg
+                        className="w-4 h-4 ml-0.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
+        </React.Fragment>
       ))}
-    </Swiper>
+    </div>
   );
 };
 
 export default WorkSlider;
-
-
