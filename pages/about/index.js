@@ -146,29 +146,31 @@ const About = () => {
             </div>
           )}
             <motion.a
-            href="#"
-            className="text-secondary hover:text-black  transition-colors"
-            onClick={toggleYMCACommentsModal} // Open modal on click
-            whileHover={{ scale: 1.05 }}
-          >
-           I love soft pastel &#127912; painting!!!
-           </motion.a>
-          {/* Modal for displaying the image */}
-         
-     
+  href="#"
+  className="text-secondary hover:text-black  transition-colors"
+  onClick={toggleYMCACommentsModal}
+  whileHover={{ scale: 1.05 }}
+>
+  I love soft pastel &#127912; painting!!!
+</motion.a>
+
 {showYMCACommentsModal && (
   <div className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50">
     <div className="relative max-w-sm max-h-sm bg-white p-4 rounded-lg shadow-lg">
-    <video
-  src="/video.mp4" // Change this path to the location of your video file
-  controls
-  className="w-full h-auto"
-/>
+      <iframe
+        title="YouTube Video"
+        width="100%"
+        height="auto"
+        src="https://www.youtube.com/embed/DxGH0C-yEbE"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
       <button
         onClick={toggleYMCACommentsModal}
         className="absolute top-2 right-2 text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded-full"
       >
-       <FaTimes />
+        <FaTimes />
       </button>
     </div>
   </div>
