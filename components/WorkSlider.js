@@ -43,7 +43,7 @@ const WorkSlider = () => {
   };
 
   return (
-    <div className="mt-10 mb-16  grid gap-12 justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 md:mt-20 lg:mt-20 xl:mt-20">
+    <div className="mb-20 pb-20 grid gap-0 lg:gap-10 xl:gap-10 justify-center md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 md:mt-25 lg:mt-20 xl:mt-20">
       {workSlider.slides.map((slide, slideIndex) => (
         <React.Fragment key={slideIndex}>
           {slide.images &&

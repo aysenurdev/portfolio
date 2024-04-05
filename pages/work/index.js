@@ -5,7 +5,7 @@ import { fadeIn } from '../../variants';
 
 const Work = () => {
   return (
-    <div className='h-full bg-primary py-36 sm:pt-6'> 
+    <div className='h-full bg-primary py-36 sm:pt-6 '> 
       <div className='container mx-auto'>
         <div className='flex flex-col items-center justify-center'>
           {/* text */}
@@ -26,7 +26,7 @@ const Work = () => {
             initial='show'
             animate='show'
             exit='hidden'
-            className='w-full max-w-[65%] md:w-full' // Set to full width on mobile
+            className='w-full xl:max-w-[65%] md:w-full' // Set to full width on mobile
           >
             <WorkSlider />
           </motion.div>
