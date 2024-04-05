@@ -19,6 +19,8 @@ import Avatar from "../../components/Avatar";
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 import CountUp from "react-countup";
+import Image from 'next/image';
+
 
 // Import or define aboutData here
 const aboutData = [
@@ -28,22 +30,25 @@ const aboutData = [
       {
         title: 'Web Development',
         icons: [
-          <FaHtml5 />,
-          <FaCss3 />,
-          <FaJs />,
-          <FaReact />,
-          <SiNextdotjs />,
-          <SiFramer />,
-          <FaWordpress />,
+          <FaHtml5 key="html5" />,
+          <FaCss3 key="css3" />,
+          <FaJs key="js" />,
+          <FaReact key="react" />,
+          <SiNextdotjs key="nextjs" />,
+          <SiFramer key="framer" />,
+          <FaWordpress key="wordpress" />,
         ],
       },
       {
         title: 'UI/UX Design',
-        icons: [<FaFigma />, <SiAdobexd />, <SiAdobephotoshop />],
+        icons: [
+          <FaFigma key="figma" />,
+          <SiAdobexd key="adobexd" />,
+          <SiAdobephotoshop key="photoshop" />,
+        ],
       },
     ],
   },
-  
   {
     title: 'experience',
     info: [
@@ -117,7 +122,7 @@ const About = () => {
             <span className="text-secondary font-cinzel">About me</span>
           </h2>
           <p className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-1o px-2 xl:px-0  text-accent">
-            Welcome! My name is Aysenur. I am a Early Childhood Educator turned Front-End Web Developer based in Vancouver, Canada. My journey from teaching to technology has been remarkable. I specialize in React, Next.js, Tailwind CSS and SASS to create clean, user-friendly, responsive web designs. I'm passionate about crafting seamless web experiences and eager to collaborate on meaningful tech projects. 
+            Welcome! My name is Aysenur. I am a Early Childhood Educator turned Front-End Web Developer based in Vancouver, Canada. My journey from teaching to technology has been remarkable. I specialize in React, Next.js, Tailwind CSS and SASS to create clean, user-friendly, responsive web designs. I am passionate about crafting seamless web experiences and eager to collaborate on meaningful tech projects. 
           </p>
           <h2 className="text-lg ">&#128522; Exploring Me & My Hobbies !!</h2>
           <motion.a
@@ -131,10 +136,12 @@ const About = () => {
           {showImageModal && (
             <div className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50 z-20">
               <div className="relative max-w-sm max-h-sm bg-white p-4 rounded-lg mt-12 shadow-lg">
-                <img
+                <Image
                   src="/handmap.png"
                   alt="Ukulele"
                   className="w-full h-auto"
+                  width={300}
+                  height={300}
                 />
                 <button
                   onClick={toggleImageModal}
@@ -190,10 +197,12 @@ const About = () => {
 {showCoffeeModal && (
   <div className="fixed top-0 left-0 flex justify-center items-center w-full h-full bg-black bg-opacity-50 z-20">
     <div className="relative max-w-sm max-h-sm bg-white p-4 rounded-lg mt-12 shadow-lg">
-      <img
+      <Image
         src="/coffee.png"
         alt="Ukulele"
         className="w-full h-auto"
+        width={300}
+        height={300}
       />
       <button
         onClick={toggleCoffeeModal}
@@ -211,34 +220,37 @@ const About = () => {
         {/* Info section */}
         <div className="flex flex-col    w-full xl:max-w-[40%] h-[320px] mb-100">
         <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
-  {aboutData.map((item, itemIndex) => (
-    <div
-      key={itemIndex}
-      className={`${
-        index === itemIndex &&
-        'text-secondary after:w-[100%] after:bg-accent after:transition-all after:duration-300'
-      } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-blue-500 after:absolute after:-bottom-1 after:left-0 titleHover`}
-      onClick={() => setIndex(itemIndex)}
-    >
-      {item.title}
-    </div>
-  ))}
+        {aboutData.map((item, itemIndex) => (
+  <div
+    key={itemIndex}
+    className={`${
+      index === itemIndex &&
+      'text-secondary after:w-[100%] after:bg-accent after:transition-all after:duration-300'
+    } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-blue-500 after:absolute after:-bottom-1 after:left-0 titleHover`}
+    onClick={() => setIndex(itemIndex)}
+  >
+    {item.title}
+  </div>
+))}
+
 </div>
 
-          <div className="py-2 xl:py-6 flex flex-col mb-80 gap-y-2 xl:gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemIndex) => (
-              <div key={itemIndex} className="flex-1 flex  mb-50 flex-col md:flex-row max-w-max gap-x-2 items-center text-accent ">
-                <div className="text-base mb-2 md:mb-0 ">{item.title}</div>
-                <div className="hidden md:flex"></div>
-                <div>{item.stage} </div>
-                <div className="flex gap-4">
-                  {item.icons?.map((icon, itemIndex) => (
-                    <div className="text-2xl text-accent">{icon}</div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+<div className="py-2 xl:py-6 flex flex-col mb-80 gap-y-2 xl:gap-y-4 items-center xl:items-start">
+{aboutData[index].info.map((item, itemIndex) => (
+  <div key={itemIndex} className="flex-1 flex  mb-50 flex-col md:flex-row max-w-max gap-x-2 items-center text-accent">
+    <div className="text-base mb-2 md:mb-0">{item.title}</div>
+    <div className="hidden md:flex"></div>
+    <div>{item.stage} </div>
+    <div className="flex gap-4">
+      {item.icons?.map((icon, iconIndex) => (
+        <div key={iconIndex} className="text-2xl text-accent">{icon}</div>
+      ))}
+    </div>
+  </div>
+))}
+
+</div>
+
         </div>
       </div>
     </div>
